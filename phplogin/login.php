@@ -39,7 +39,7 @@ if(Input::exists()){
 <head>
 <title>Login Page</title>
 <style type="text/css">
-*{
+* {
 	margin: 0px; padding: 0px;
 }
 
@@ -52,14 +52,14 @@ body{
 header{
 	background: #3a5795;
 	color: #fff;
-	padding: 20px 5px;
+	padding: 18px 5px;
 }
 
-header h2{
-	font-size: 38px;
+.top h2{
+	font-size: 40px;
 }
 
-header .top{
+.top{
 	width: 850px;
 	margin: 0px auto;
 }
@@ -91,10 +91,12 @@ a:hover{
 }
 
 .btn-login{
-	width: 210px;
+	width: 300px;
+	height: 43px;
 	background: #3a5795;
 	border: none;
 	padding: 8px;
+	margin: 10px auto;
 }
 
 section{
@@ -102,7 +104,7 @@ section{
 	background: #e9eaed;
 }
 
-section .center{
+.center{
 	border: 1px solid #ccc;
 	border-radius: 5px;
 	background: #fff;
@@ -110,23 +112,60 @@ section .center{
 	height:280px;
 	width: 600px;
 	margin: 100px auto;
+}
+
+.input-group{
+	margin-top:10px;
+    width:60%;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+}
+
+p{
+	display: block;
 	font-size: 14px;
 }
 
-section p{
+.example{
+	font-size: 18px;
 	text-align: center;
+}
+
+label {
+	display: inline;
+	float: left;
+}
+
+.recall{
+	display: block;
+  	padding-left: 170px;
+  	text-indent: -15px;
+}
+
+div .rem{
+	font-size: 14px;
+	display: block;
 }
 
 input{
 	display: block;
-	width: 250px;
+	width: 280px;
+	height: 20px;
 	margin: 10px auto;
 	padding: 5px;
 }
 
-input .chkbx{
+.chkbx{
 	display: inline;
-	width: 20px;
+	width: 14px;
+  	height: 13px;
+  
+  	vertical-align: bottom;
+  	position: relative;
+  	top: -1px;
+  	*overflow: hidden; 	
+  	margin: 0 auto;
 }
 
 footer{
@@ -134,12 +173,14 @@ footer{
 	color: #d3d3d3;
 }
 
-footer .bottom{
+.bottom{
 	width: 850px;
 	margin: 0 auto;
+	text-align: left;
+	padding: 10px 0;
 }
 
-footer p{
+p{
 	padding: 8px 0;
 	color: #808080;
 }
@@ -161,28 +202,28 @@ border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 	<section>
 		<form action="" method="post">
 			<div class="center">
+				<div class="example">User Login
 				<div class="field">
-					<label for="username">Username</label>
 					<input type="text" name="username" id="username" placeholder="Username"autocomplete="off">
 				</div>
 				<div class="field">
-					<label for="password">Password</label>
 					<input type="password" name="password" id="password" placeholder="Password" autocomplete="off">
 				</div>
-				<div class="field">
-					<label for="remember">
-						<input type="checkbox" name="remember" id="remember" class="chkbx"> Remember me
-					</label>
+				<div class="field"><p>
+				<label for="remember" class="recall">						
+				<input type="checkbox" name="remember" id="remember" class="chkbx">
+				Remember me</label></p>
+			</div>
+			<div class="field">
+				<p><input type="submit" value="Log in" class="btn btn-login"></p>
+					<p><a href="register.php">Sign up here</a></p>
+				<input type="hidden" name="token" value="<?php echo Token::generate(); ?>" />
 				</div>
-				<input type="hidden" name="token" value="<?php echo Token::generate(); ?>">
-				<input type="submit" value="Log in" class="btn btn-login">
-				<p><a href="#">Sign up here</a></p>
 			</div>
 		</form>
 	</section>
 	<footer>
-		<div class="bottom">
-			<p>Login Page &copy; 2017</p>
+		<div class="bottom">Login Page &copy; 2017
 			<hr class="style-one">
 		</div>
 	</footer>
