@@ -195,8 +195,8 @@ border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 </head>
 <body>
 	<header>
-		<div class="top">
-			<h2>login template <button class="btn btn-signup">Sign up</button></h2>
+		<div class="top"><form action="register.php">
+			<h2>login template <button class="btn btn-signup">Sign up</button></h2></form>
 		</div>
 	</header>
 	<section>
