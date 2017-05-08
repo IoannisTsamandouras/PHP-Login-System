@@ -242,13 +242,14 @@ hr.style-one {
             </tr>            
         </table>
       </div>
-
-        <div class="slider_img">
-           <h2 class="">Connect and share with the people<br/>in your life.</h2>
-           <img src="\logo.png" alt="logo">
-         </div>
-    
-    <div class="right">    
+  
+  <div class="slider_img">
+    <br><br>
+    <h2 class="">Connect and share with the people<br/>in your life.</h2>
+    <img src="logo.png" alt="logo" />
+  </div>
+  
+  <div class="right">    
     <form class="form" action="index.php" method="post">
         <h1 class="create" >Sign Up</h1>
         <h2 class="free">It's free and always will be.</h2> 
