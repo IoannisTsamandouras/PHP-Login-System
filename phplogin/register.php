@@ -250,7 +250,7 @@ hr.style-one {
   </div>
   
   <div class="right">    
-    <form class="form" action="index.php" method="post">
+    <form class="form" action="" method="post">
         <h1 class="create" >Sign Up</h1>
         <h2 class="free">It's free and always will be.</h2> 
         <div class="field">      
