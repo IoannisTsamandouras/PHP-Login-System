@@ -94,7 +94,7 @@ if(Input::exists()){
    }
 .front {
   background-color: #3b5998;
-  height: 75pt;
+  height: 63pt;
   overflow: hidden;
 }
 table {
@@ -156,15 +156,6 @@ table {
   right: 140px;
 }
        
-img {
-  position: relative;
-  left: 120px;
-  top: -550px;
-  padding: 0px;
-  width: 400px;
-  margin: 0px;
-}
-     
 .form {
   text-align: right;
   position: relative;
