@@ -2,6 +2,36 @@
 require_once 'core/init.php';
 
 if(Input::exists()){
+    $validate = new Validate();
+    $validation = $validate->check($_POST, array(
+      'username' => array('required' => true),
+      'password' => array('required' => true)
+      ));
+    
+    if($validation->passed()){
+      $user = new User();
+      $login = $user->login(Input::get('username'), Input::get('password'));
+
+      if($validation->passed()){
+        $user = new User();
+
+        $remember = (Input::get('remember') === 'on') ? true : false;
+        $login = $user->login(Input::get('username'), Input::get('password'), $remember);
+
+        if($login){
+          Redirect::to('index.php');
+        }else{
+          echo '<p>Sorry, logging in failed</p>';
+        }
+      }else{
+        foreach($validation->errors() as $error){
+          echo $error, '<br>';
+        }
+      }
+    }
+  }
+
+if(Input::exists()){
   if(Token::check(Input::get('token'))){
     $validate = new Validate();
     $validation = $validate->check($_POST, array(
@@ -25,10 +55,8 @@ if(Input::exists()){
         'max' => 50
         )
       ));
-
     if($validation->passed()){
       $user = new User();
-
       $salt = Hash::salt(32);
       
       try{
@@ -42,7 +70,6 @@ if(Input::exists()){
           ));
         Session::flash('home', 'You have been registered and can now log in.');
         Redirect::to('index.php');
-
       }catch(Exception $e){
         die($e->getMessage());
       }
@@ -65,13 +92,11 @@ if(Input::exists()){
     margin: 0;
     padding: 0;
    }
-
 .front {
   background-color: #3b5998;
   height: 75pt;
   overflow: hidden;
 }
-
 table {
   position: relative;
   left: 800px;
@@ -109,7 +134,6 @@ table {
   border-radius: 3px;
   padding: 2px 5px 2px 5px;
 }
-
 .right {
   background: linear-gradient(#ffffff, #d8dfea);
   height: 580pt;
@@ -122,7 +146,6 @@ table {
   margin-left: 130px;
   float: left;
 }
-
 .disclaimer {
   font-family: Helvetica;
   font-size: 10px;
@@ -185,7 +208,6 @@ img {
   position: relative;
   right:294px;  
 }                           
-
 button {
   font-size: 18px;
   font-family: Tahoma;
@@ -204,20 +226,17 @@ button {
   border:1px solid #BBBBBB;
   padding: 5px;
 }   
-
 footer {
   font-size: 12px;  
   color: #d3d3d3;
   height: 77px;
 }
-
 .bottom {
   width: 850px;
   margin: 0 auto;
   text-align: left;
   padding: 10px 0;
 }
-
 hr.style-one {
   border: 0;
   height: 0;
@@ -227,6 +246,7 @@ hr.style-one {
  </style>
 </head>
 <body>
+  <form action="" method="post">
     <div class="front">
         <h1 class="logo">Log In or Sign Up</h1>
         <table>
@@ -235,13 +255,14 @@ hr.style-one {
                 <td>Password</td>
             </tr>
             <tr>
-                <td><input class="table" type="text" name="username"></td>
-                <td><input class="table" type="password" name="password"></td>
+                <td><input class="table" type="text" name="username" autocomplete="off"></td>
+                <td><input class="table" type="password" name="password" autocomplete="off"></td>
                 <td><input type="submit" value="Log in" name="submit" size="12px" 
                   class="submit"></td>
             </tr>            
         </table>
       </div>
+    </form>
   
   <div class="slider_img">
     <br><br>
